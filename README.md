@@ -7,3 +7,5 @@ re-upload because other repo got really messy due to stupid fixes.
 <p>Cant get it deployed and since it's only a tracker. I quit trying to deploy it.</p>
 <p>Heroku can't compile java (locally runs perfect)</p>
 <p>Netlify can't handle java</p>
+
+<img src="https://raw.githubusercontent.com/Beardificent/springboot-corona-tracker/master/Screenshot%20from%202020-12-23%2015-54-40.png">

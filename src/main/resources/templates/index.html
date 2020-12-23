@@ -4,8 +4,9 @@
 
 <head>
     <title>Corona Tracker App</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="@{/static.css/style.css}"/>
 
 </head>
@@ -13,44 +14,63 @@
 <body>
 <div class="container m-auto">
     <div class="bg-light">
-<h1>Corona Tracker App</h1>
-<p>Current reported cases across the world. Updated daily.</p>
-    <hr class="my-4">
-    <p>
-        <span>New cases reported since previous day</span>
-        <span th:text="${totalNewCases}">></span>
-    </p>
+        <h1>Corona Tracker App</h1>
+        <p>Current reported cases across the world. Updated daily.</p>
+        <hr class="my-4">
+        <p>
+            <span>New cases reported since previous day</span>
+            <span th:text="${totalNewCases}">></span>
+        </p>
 
-<div class="jumbotron jumbotron-fluid">
-    <div class="container">
-        <h1 class="display-3" th:text="${totalReportedCases}">Total cases</h1>
-        <p class="lead">Total cases reported as of today.</p>
+        <div class="jumbotron jumbotron-fluid">
+            <div class="container">
+                <h1 class="display-3" th:text="${totalReportedCases}">Total cases</h1>
+                <p class="lead">Total cases reported as of today.</p>
+            </div>
+            <p>For now use 'ctrl + F' and type in your country to skim through the entire list</p>
+        </div>
+    </div>
+
+    <div class="row py-5">
+        <div class="col-lg-10 mx-auto">
+            <div class="card rounded shadow border-0">
+                <div class="card-body p-5 bg-white rounded">
+                    <div  class="table-responsive">
+                        <table id="example" style="width:100%" class="table table-striped table-bordered">
+                            <thead>
+                            <tr>
+                                <th>COUNTRY</th>
+                                <th>STATE</th>
+                                <th>TOTAL CASES REPORTED</th>
+                                <th>DIFFERENCE WITH YESTERDAY</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="locationStat : ${locationStats}">
+                                <td th:text="${locationStat.country}">/td>
+                                <td th:text="${locationStat.state}"></td>
+                                <td th:text="${locationStat.latestTotalCases}"></td>
+                                <td th:text="${locationStat.diffFromPrevDay}"></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
-    </div>
 
-<table class="table table-striped">
-    <thead class="thead-dark">
-    <tr>
-        <th >STATE</th>
-        <th>COUNTRY</th>
-        <th>TOTAL CASES REPORTED</th>
-        <th>Difference with yesterday</th>
-    </tr>
-    </thead>
-    <tr th:each="locationStat : ${locationStats}">
-        <td th:text="${locationStat.state}"></td>
-        <td th:text="${locationStat.country}"></td>
-        <td th:text="${locationStat.latestTotalCases}">0</td>
-        <td th:text="${locationStat.diffFromPrevDay}">0</td>
-    </tr>
-</table>
+
 </div>
-
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"
+        integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ"
+        crossorigin="anonymous"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"
+        integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd"
+        crossorigin="anonymous"></script>
 </body>
 
 </html>
